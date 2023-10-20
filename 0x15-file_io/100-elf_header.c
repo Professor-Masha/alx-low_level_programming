@@ -15,7 +15,7 @@ void print_class(unsigned char *e_ident);
 void print_abi(unsigned char *e_ident);
 void print_osabi(unsigned char *e_ident);
 void print_type(unsigned int e_type, unsigned char *e_ident);
-void close_elf(int elf)
+void close_elf(int elf);
 
 /**
  * check_elf - A fun that checks if a file is ELF.
@@ -23,7 +23,7 @@ void close_elf(int elf)
  *
  * Description: If the file is not an ELF file - exit code 98.
  */
-void check_elf(unsigned char *e_ident)
+void check_elf(unsigned char *e_ident);
 {
 	int index;
 
@@ -46,7 +46,7 @@ void check_elf(unsigned char *e_ident)
  *
  * Description: No are separated by spaces.
  */
-void print_magic(unsigned char *e_ident)
+void print_magic(unsigned char *e_ident);
 {
 	int index;
 
@@ -67,7 +67,7 @@ void print_magic(unsigned char *e_ident)
  * print_class - A fun that prints the class of an ELF header
  * @e_ident: The pointer to an array containing the ELF class.
  */
-void print_class(unsigned char *e_ident)
+void print_class(unsigned char *e_ident);
 {
 	printf(" Class: ");
 
@@ -91,7 +91,7 @@ void print_class(unsigned char *e_ident)
  * print_data - A fun that prints the data of an ELF header
  * @e_ident: The pointer to an array cont the ELF class.
  */
-void print_data(unsigned char *e_ident)
+void print_data(unsigned char *e_ident);
 {
 	printf(" Data: ");
 
@@ -115,7 +115,7 @@ void print_data(unsigned char *e_ident)
  * print_version - A fun that prints the version of an ELF header
  * @e_ident: The pointer to an array cont the ELF version.
  */
-void print_version(unsigned char *e_ident)
+void print_version(unsigned char *e_ident);
 {
 	 printf(" Version: %d",
 			  e_ident[EI_VERSION]);
@@ -135,7 +135,7 @@ void print_version(unsigned char *e_ident)
  * print_osabi - A fun that prints the OS/ABI of an ELF.
  * @e_ident: The pointer to an array cont the ELF vsn.
  */
-void print_osabi(unsigned char *e_ident)
+void print_osabi(unsigned char *e_ident);
 {
 	printf(" OS/ABI: ");
 
@@ -180,7 +180,7 @@ void print_osabi(unsigned char *e_ident)
  * print_abi - A fun that prints the ABI version of an ELF.
  * @e_ident: The pointer to an array cont the ELF ABI vsn.
  */
-void print_abi(unsigned char *e_ident)
+void print_abi(unsigned char *e_ident);
 {
 	printf(" ABI Version: %d\n",
 		e_ident[EI_ABIVERSION]);
@@ -191,7 +191,7 @@ void print_abi(unsigned char *e_ident)
  * @e_type: The ELF type
  * @e_ident: The ptr to an array cont the ELF class
  */
-void print_type(unsigned int e_type, unsigned char *e_ident)
+void print_type(unsigned int e_type, unsigned char *e_ident);
 {
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 		e_type >>= 8;
@@ -225,7 +225,7 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
  * @e_entry: An address of the ELF entry point
  * @e_ident: The pointer to an array cont the ELF.
  */
-void print_entry(unsigned long int e_entry, unsigned char *e_ident)
+void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 {
 	printf(" Entry point address: ");
 
@@ -249,7 +249,7 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
  *
  * Description: If the file cannot be closed - exit code 98.
  */
-void close_elf(int elf)
+void close_elf(int elf);
 {
 	if (close(elf) == -1)
 	{
@@ -270,7 +270,7 @@ void close_elf(int elf)
  * Description: If the file is not an ELF File or
  * the fun fails - exit code 98
  */
-int main(int __attribute__((__unused__)) argc, char *argv[])
+int main(int __attribute__((__unused__)) argc, char *argv[]);
 {
 	Elf64_Ehdr *header;
 	int o, r;
